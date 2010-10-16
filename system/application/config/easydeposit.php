@@ -8,8 +8,8 @@
 // Admin username and password
 // (The password is stored encrypted. 6da12e83ef06d1d59884a5ca724cbc75 is 'easydepositadmin'
 // The password can be changed in the admin interface
-$config['easydeposit_adminusername'] = 'easydepositadmin';
-$config['easydeposit_adminpassword'] = '6da12e83ef06d1d59884a5ca724cbc75';
+//$config['easydeposit_adminusername'] = 'easydepositadmin';
+//$config['easydeposit_adminpassword'] = '6da12e83ef06d1d59884a5ca724cbc75';
 
 // Location of the SWORD PHP library (this normally doesn't need to be changed)
 $config['easydeposit_librarylocation'] = 'system/application/libraries/swordapp-php-library';
@@ -33,7 +33,7 @@ $config['easydeposit_ldaplogin_context'] = 'OU=users,DC=example,DC=com';
 $config['easydeposit_servicedocumentlogin_url'] = 'http://example.com/sword/servicedocument';
 
 // A list of service documents to provide in the selectrepository step
-$config['easydeposit_selectrepository_list'] = array('http://localhost:8080/sword/servicedocument', 'http://client.swordapp.org/client/servicedocument', 'http://dspace.swordapp.org/sword/servicedocument', 'http://sword.eprints.org/sword-app/servicedocument', 'http://sword.intralibrary.com/IntraLibrary-Deposit/', 'http://fedora.swordapp.org/sword-fedora/servicedocument');
+$config['easydeposit_selectrepository_list'] = array('https://dspace.ndlr.ie/sword/servicedocument');
 
 // Credentials with which to retrieve a service document automatically
 $config['easydeposit_retrieveservicedocument_url'] = 'http://example.com/sword/servicedocument';
