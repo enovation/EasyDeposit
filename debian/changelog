@@ -1,0 +1,5 @@
+ndlrdeposit (0.1-1) unstable; urgency=low
+
+  * Initial release (Closes: #nnnn)  <nnnn is the bug number of your ITP>
+
+ -- Tomasz Muras <tm@enovation.ie>  Sat, 16 Oct 2010 12:57:27 +0100
