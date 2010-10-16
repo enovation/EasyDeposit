@@ -11,7 +11,18 @@
 |	http://example.com/easydeposit/
 |
 */
-$config['base_url']	= "http://example.com/easydeposit/";
+
+/* NDLR customization
+| auto-discover 'base_url'
+| in case of any problems, hardcode your URL at after the section below
+*/
+$protocol = strpos(strtolower($_SERVER['SERVER_PROTOCOL']),'https') === FALSE ? 'http' : 'https';
+$host     = $_SERVER['HTTP_HOST'];
+$script   = $_SERVER['SCRIPT_NAME'];
+//strip index.php from the end
+$script = str_replace('index.php','',$script);
+$config['base_url'] = $protocol . '://' . $host . $script;
+//$config['base_url'] = "http://example.com/easydeposit/";
 
 /*
 |--------------------------------------------------------------------------
