@@ -20,7 +20,19 @@ set -e
 
 case "$1" in
     configure)
+        webserver=apache2
+        if [ -d /etc/$webserver/conf.d ] && [ ! -e /etc/$webserver/conf.d/ndlrdeposit.conf ]; then
+            ln -s ../../ndlrdeposit/apache.conf /etc/$webserver/conf.d/ndlrdeposit.conf
+        fi
+        if [ -f /etc/init.d/$webserver ] ; then
+            if [ -x /usr/sbin/invoke-rc.d ]; then
+                invoke-rc.d $webserver reload 3>/dev/null || true
+            else
+                /etc/init.d/$webserver reload 3>/dev/null || true
+            fi
+        fi
     ;;
+
 
     abort-upgrade|abort-remove|abort-deconfigure)
     ;;

@@ -21,7 +21,14 @@ set -e
 
 case "$1" in
     purge|remove|upgrade|failed-upgrade|abort-install|abort-upgrade|disappear)
-    ;;
+      webserver=apache2
+      if [ -d /etc/$webserver/conf.d ] && [ -L /etc/$webserver/conf.d/ndlrdeposit.conf ]; then
+        rm -f /etc/$webserver/conf.d/ndlrdeposit.conf;;
+      fi
+
+      if [ "$1" = "purge" ]; then
+        rm -rf /etc/ndlrdeposit /usr/share/ndlrdeposit
+      fi
 
     *)
         echo "postrm called with unknown argument \`$1'" >&2
