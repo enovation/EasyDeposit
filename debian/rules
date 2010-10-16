@@ -8,6 +8,12 @@
 
 # Uncomment this to turn on verbose mode.
 #export DH_VERBOSE=1
+export SHELL = /bin/bash
+
+VERSION := $(shell head -1 debian/changelog | sed 's/.*(//;s/).*//')
+UPSTREAM   := $(shell head -1 debian/changelog | sed 's/.*(//;s/-.?*).*//')
+MAINTAINER := $(shell grep ^Maintainer: debian/control | sed 's/^Maintainer: //')
+
 
 %:
 	dh $@ 
