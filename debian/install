@@ -4,3 +4,4 @@ index.php usr/share/ndlrdeposit
 js        usr/share/ndlrdeposit
 private   usr/share/ndlrdeposit
 system    usr/share/ndlrdeposit
+debian/conf/*   etc/ndlrdeposit

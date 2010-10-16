@@ -10,6 +10,6 @@ Homepage: http://easydeposit.swordapp.org/
 
 Package: ndlrdeposit
 Architecture: any
-Depends: ${shlibs:Depends}, ${misc:Depends}
+Depends: ${shlibs:Depends}, ${misc:Depends}, libapache2-mod-php5, apache2, php5-curl
 Description: EasyDeposit for NDLR
  EasyDeposit version pre-packaged for the NDLR SWORD push (http://dspace.ndlr.ie).
