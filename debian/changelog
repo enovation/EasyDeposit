@@ -1,3 +1,10 @@
+ndlrdeposit (20101011-1) testing; urgency=low
+
+  * New bug fixes, tracked on https://github.com/enovation/EasyDeposit/tree/ndlr-source .
+  * Package version in line with upstream.
+
+ -- Tomasz Muras <tm@enovation.ie>  Sat, 16 Oct 2010 20:15:56 +0100
+
 ndlrdeposit (0.1-1) testing; urgency=low
 
   * Initial release
