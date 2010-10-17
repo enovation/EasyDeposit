@@ -15,7 +15,7 @@
 $config['easydeposit_librarylocation'] = 'system/application/libraries/swordapp-php-library';
 
 // The name of the application (as shown on the welcome page)
-$config['easydeposit_welcome_title'] = "NDLR EasyDeposit UAT";
+$config['easydeposit_welcome_title'] = 'NDLR EasyDeposit';
 
 // The steps that a submission should take
 // The first of these should be a login step that has public static methods _loggedin and _id
