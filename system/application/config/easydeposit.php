@@ -54,11 +54,11 @@ $config['easydeposit_metadata_peerreviewstatus'] = array('http://purl.org/eprint
 $config['easydeposit_uploadfiles_number'] = 5;
 
 // Where to save files (remember trailing slash!)
-$config['easydeposit_uploadfiles_savedir'] = 'private/uploadfiles/';
+$config['easydeposit_uploadfiles_savedir'] = '/var/lib/ndlrdeposit/';
 
 // Where to store packages (make sure these directories exist and the web server can write to them)
-$config['easydeposit_deposit_packages'] = 'private/uploadfiles/';
-$config['easydeposit_multipledeposit_packages'] = "private/uploadfiles/";
+$config['easydeposit_deposit_packages'] = '/var/lib/ndlrdeposit/';
+$config['easydeposit_multipledeposit_packages'] = '/var/lib/ndlrdeposit/';
 
 //license locations
 $config['ndlr_cclicense_location']='private/licenses/cclicense.txt';

@@ -31,6 +31,12 @@ case "$1" in
                 /etc/init.d/$webserver reload 3>/dev/null || true
             fi
         fi
+
+	datadir=/var/lib/ndlrdeposit
+        if [ -d $datadir ]; then
+            chown -R www-data:www-data $datadir
+            chmod 0750 $datadir
+        fi
     ;;
 
 
