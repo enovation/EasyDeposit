@@ -69,9 +69,9 @@ class EasyDeposit extends Controller {
         // Turn the sessions on
         // Restrict the session to the base url of this instance in case multiple
         // instances are installed on the same domain
-        $sessionhost = substr(base_url(), 7, strpos(base_url(), '/', 7) - 7);
-        $sessionpath = substr(base_url(), strpos(base_url(), '/', 8));
-        session_set_cookie_params(1800, $sessionpath, $sessionhost);
+/*        $sessionhost = substr(base_url(), 7, strpos(base_url(), '/', 7) - 7);
+        $sessionpath = substr(base_url(), strpos(base_url(), '/', 8));*/
+        session_set_cookie_params(1800);
         session_start();
 
         // Check the user is logged in, else redirect them to the first step
