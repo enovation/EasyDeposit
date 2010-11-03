@@ -46,7 +46,7 @@ class Metadata extends EasyDeposit
             $this->load->view('footer');
         }
         else
-        {error_log('hello');
+        {
             // Store the metadata in the session
             $_SESSION['metadata-title'] = $this->input->xss_clean($_POST['title']);
             $_SESSION['metadata-author1'] = $this->input->xss_clean($_POST['author1']);
@@ -75,11 +75,9 @@ class Metadata extends EasyDeposit
 
 	    if (file_exists($savepath))
             {
-                error_log("FILE EXISTS - metadata");
 		$this->_rmdir_R($savepath);
             }
             mkdir($savepath);
-	    error_log('mark_log in license metadata controller');
             if($_SESSION['licText'] == 'Y'){
                 copy($this->config->item('ndlr_cclicense_location'), $savepath.'/license.txt');
             }else{

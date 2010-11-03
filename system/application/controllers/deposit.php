@@ -52,7 +52,6 @@ class Deposit extends EasyDeposit
             $package->create();
 
             // Deposit the package
-            error_log('about to deposit');
 		require_once($this->config->item('easydeposit_librarylocation') . '/swordappclient.php');
             $sac = new SWORDAPPClient();
             $contenttype = "application/zip";

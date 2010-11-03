@@ -42,11 +42,9 @@ class UploadFiles extends EasyDeposit
 
 	//	if (file_exists($savepath))
          //   {
-          //      error_log("FILE EXISTS - upload");
            //     $this->_rmdir_R($savepath);
             //}
            // mkdir($savepath);
-	error_log("mark_log create directory uploadfiles");
             
             // Save the uploaded files
             $hasfile = false;
