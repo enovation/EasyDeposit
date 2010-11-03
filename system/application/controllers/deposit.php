@@ -48,14 +48,16 @@ class Deposit extends EasyDeposit
                 $stepclass = ucfirst($stepname);
                 call_user_func(array($stepclass, '_package'), $package);
             }
+
             $package->create();
 
             // Deposit the package
-            require_once($this->config->item('easydeposit_librarylocation') . '/swordappclient.php');
+            error_log('about to deposit');
+		require_once($this->config->item('easydeposit_librarylocation') . '/swordappclient.php');
             $sac = new SWORDAPPClient();
             $contenttype = "application/zip";
             $format = "http://purl.org/net/sword-types/METSDSpaceSIP";
-            $response = $sac->deposit($_SESSION['depositurl'],
+		$response = $sac->deposit($_SESSION['depositurl'],
                                       $_SESSION['sword-username'],
                                       $_SESSION['sword-password'],
                                       $_SESSION['sword-obo'],
@@ -63,8 +65,7 @@ class Deposit extends EasyDeposit
                                               $this->userid . '.zip',
                                       $format,
                                       $contenttype);
-
-            if (($response->sac_status == 200) || ($response->sac_status == 201))
+            if (($response->sac_status == 200) || ($response->sac_status == 201) || ($response->sac_status == 202))
             {
                 $_SESSION['deposited-response'] = $response->sac_xml;
                 $_SESSION['deposited-url'] = (string)$response->sac_id;
@@ -73,7 +74,8 @@ class Deposit extends EasyDeposit
             {
                 $error = 'Server returned status code: ' . $response->sac_status . "\n\n";
                 $error .= 'Server provided response: ' . $response->sac_xml;
-            }
+		error_log('error: '+$error);
+            }	
         }
         catch (Exception $e)
         {
@@ -82,7 +84,8 @@ class Deposit extends EasyDeposit
             $error .= 'Deposit URL: ' . $_SESSION['depositurl'] . "\n";
             $error .= 'Deposit username: ' . $_SESSION['sword-username'] . "\n";
             $error .= 'Package file: ' . $this->config->item('easydeposit_deposit_packages') . $this->userid . '.zip' . "\n";                                                         
-
+	    error_log($error);
+		
             if (!empty($response->sac_xml))
             {
                 $error .= "\n\nResponse:" . $response->sac_xml;

@@ -43,7 +43,7 @@ class ServiceDocument extends EasyDeposit
             $data['obo'] = $_SESSION['sword-obo'];
 
             // Load javascripts
-            $data['javascript'] = array('mootools1.2.js', 'mootools1.2-more.js', 'toggle-o-matic.js');
+            $data['javascript'] = array('mootools1.2.js', 'mootools1.2-more.js', 'toggle-o-matic.js', 'jquery-1.4.3.js', 'jquery.mcdropdown.js', 'jquery.bgiframe.js');
 
             // Set the page title
             $data['page_title'] = 'Select a collection';

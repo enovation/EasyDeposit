@@ -231,7 +231,6 @@ class EasyDeposit extends Controller {
             $urls = $this->config->item('easydeposit_selectrepository_list');
             $url = $_POST['url'];
             $url = str_replace('/client/client/', '/client/', $url);
-
             if (is_numeric($_POST['url']))
             {
                 $url = $urls[$_POST['url']];

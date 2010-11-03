@@ -30,17 +30,23 @@ class UploadFiles extends EasyDeposit
         // Has a file been uploaded?
         if (!empty($_FILES))
         {
-            // Find the path to this script
-            $path = str_replace('index.php', '', $_SERVER["SCRIPT_FILENAME"]);
+
+		      // Find the path to this script
+            	$path = str_replace('index.php', '', $_SERVER["SCRIPT_FILENAME"]);
 
             // Make the directory to save the files in
-            $id = $this->userid;
-            $savepath = $path . $this->config->item('easydeposit_uploadfiles_savedir') . $id;
-            if (file_exists($savepath))
-            {
-                $this->_rmdir_R($savepath);
-            }
-            mkdir($savepath);
+        	$id = $this->userid;
+
+	        $savepath = $path . $this->config->item('easydeposit_uploadfiles_savedir') . $id;
+
+
+	//	if (file_exists($savepath))
+         //   {
+          //      error_log("FILE EXISTS - upload");
+           //     $this->_rmdir_R($savepath);
+            //}
+           // mkdir($savepath);
+	error_log("mark_log create directory uploadfiles");
             
             // Save the uploaded files
             $hasfile = false;

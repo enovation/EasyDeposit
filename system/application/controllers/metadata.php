@@ -16,9 +16,11 @@ class Metadata extends EasyDeposit
     }
 
     function index()
-    {
+    {   
+	// Load javascripts
+        $data['javascript'] = array('mootools1.2.js', 'mootools1.2-more.js', 'jquery-1.2.6.min.js', 'jquery.mcdropdown.js', 'jquery.bgiframe.js');
+
         // Prepoulate some session variables
-        $_SESSION['metadata-peerreviewed'] = '';
         $_SESSION['metadata-type'] = '';
 
         // Validate the form
@@ -28,10 +30,12 @@ class Metadata extends EasyDeposit
         $this->form_validation->set_rules('author3', 'Third author', 'xss_clean|_clean');
         $this->form_validation->set_rules('abstract', 'Abstract', 'xss_clean|_clean');
         $this->form_validation->set_rules('type', 'Type', 'xss_clean|_clean|required');
-        $this->form_validation->set_rules('peerreviewed', 'Peer review status', 'xss_clean|_clean|required');
         $this->form_validation->set_rules('citation', 'Bibliographic citation', 'xss_clean|_clean');
         $this->form_validation->set_rules('link', 'Link', 'xss_clean|_clean');
-        if ($this->form_validation->run() == FALSE)
+        $this->form_validation->set_rules('keyword', 'ISCED Keywords', 'xss_clean|_clean|required');
+	$this->form_validation->set_rules('rights', 'Rights', 'xss_clean|_clean|required');
+	
+	if ($this->form_validation->run() == FALSE)
         {
             // Set the page title
             $data['page_title'] = 'Describe your item';
@@ -42,7 +46,7 @@ class Metadata extends EasyDeposit
             $this->load->view('footer');
         }
         else
-        {
+        {error_log('hello');
             // Store the metadata in the session
             $_SESSION['metadata-title'] = $this->input->xss_clean($_POST['title']);
             $_SESSION['metadata-author1'] = $this->input->xss_clean($_POST['author1']);
@@ -53,14 +57,36 @@ class Metadata extends EasyDeposit
             $types = $this->config->item('easydeposit_metadata_itemtypes');
             $_SESSION['metadata-type'] = $this->input->xss_clean($types[$_POST['type']]);
 
-            $peer = $this->config->item('easydeposit_metadata_peerreviewstatus');
-            $_SESSION['metadata-peerreviewed'] = $this->input->xss_clean($peer[$_POST['peerreviewed']]);
-            $_SESSION['metadata-citation'] = $this->input->xss_clean($_POST['citation']);
             $_SESSION['metadata-link'] = $this->input->xss_clean($_POST['link']);
-
+	
+	    $_SESSION['metadata-keyword'] = $this->input->xss_clean($_POST['keyword']);
+	    $_SESSION['metadata-licenses'] = $this->input->xss_clean($_POST['rights']);
             // Go to the next page
-            $this->_gotonextstep();
-        }
+	    $licences = $this->config->item('ndlr_licenses');
+            $_SESSION['licText'] = $licences[$_SESSION['metadata-licenses']];
+		
+	 // Find the path to this script
+            $path = str_replace('index.php', '', $_SERVER["SCRIPT_FILENAME"]);
+
+            // Make the directory to save the files in
+            $id = $this->userid;
+
+	    $savepath = $path . $this->config->item('easydeposit_uploadfiles_savedir') . $id;
+
+	    if (file_exists($savepath))
+            {
+                error_log("FILE EXISTS - metadata");
+		$this->_rmdir_R($savepath);
+            }
+            mkdir($savepath);
+	    error_log('mark_log in license metadata controller');
+            if($_SESSION['licText'] == 'Y'){
+                copy($this->config->item('ndlr_cclicense_location'), $savepath.'/license.txt');
+            }else{
+                copy($this->config->item('ndlr_restrictivelicense_location'), $savepath.'/license.txt');
+            }
+	    $this->_gotonextstep();
+	}
     }
 
     public static function _verify($data)
@@ -81,7 +107,6 @@ class Metadata extends EasyDeposit
             $data[] = array('Abstract', $_SESSION['metadata-abstract'], 'metadata', 'true');
         }
         $data[] = array('Type of item', $_SESSION['metadata-type'], 'metadata', 'true');
-        $data[] = array('Has the item been peer reviewed?', $_SESSION['metadata-peerreviewed'], 'metadata', 'true');
         if (!empty($_SESSION['metadata-citation']))
         {
             $data[] = array('Bibliographic citation', $_SESSION['metadata-citation'], 'metadata', 'true');
@@ -89,6 +114,14 @@ class Metadata extends EasyDeposit
         if (!empty($_SESSION['metadata-link']))
         {
             $data[] = array('Link', $_SESSION['metadata-link'], 'metadata', 'true');
+        }
+	if (!empty($_SESSION['metadata-keyword']))
+        {
+            $data[] = array('ISCED Keyword', $_SESSION['metadata-keyword'], 'metadata', 'true');
+        }
+	if (!empty($_SESSION['metadata-licenses']))
+        {
+            $data[] = array('Rights',  $_SESSION['licText'], 'metadata', 'true');
         }
 
         return $data;
@@ -99,7 +132,8 @@ class Metadata extends EasyDeposit
         // Use the metadata in making the package
         $package->setTitle($_SESSION['metadata-title']);
         $package->addCreator($_SESSION['metadata-author1']);
-        if (!empty($_SESSION['metadata-author2']))
+        $package->setType($_SESSION['metadata-type']);
+	if (!empty($_SESSION['metadata-author2']))
         {
             $package->addCreator($_SESSION['metadata-author2']);
         }
@@ -111,8 +145,7 @@ class Metadata extends EasyDeposit
         {
             $package->setAbstract($_SESSION['metadata-abstract']);
         }
-        $data[] = array('Type of item', $_SESSION['metadata-type'], 'metadata', 'true');
-        $data[] = array('Has the item been peer reviewed?', $_SESSION['metadata-peerreviewed'], 'metadata', 'true');
+       // $data[] = array('Type of item', $_SESSION['metadata-type'], 'metadata', 'true');
         if (!empty($_SESSION['metadata-citation']))
         {
             $package->setCitation($_SESSION['metadata-citation']);
@@ -121,9 +154,22 @@ class Metadata extends EasyDeposit
         {
             $package->setIdentifier($_SESSION['metadata-link']);
         }
+	if(!empty($_SESSION['metadata-licenses']))
+	{
+	    $package->setLicense($_SESSION['metadata-licenses']);
+        }
+        if(!empty($_SESSION['metadata-keyword']))
+        {
+            $keywordEntry = $_SESSION['metadata-keyword'];
+	   // $keywords = preg_split("/[\s,] /", $keywordEntry);
+	   // foreach($keywords as $keyword){
+	   	$package->addKeyword($keywordEntry);
+	   // }
+        }
+
     }
 
-    public static function _email($message)
+  /*  public static function _email($message)
     {
         // Add the details
         $message .= "Thank you for depositing an electronic copy of your item '" . $_SESSION['metadata-title']. ":\n";
@@ -151,7 +197,7 @@ class Metadata extends EasyDeposit
         $message .= "\n";
 
         return $message;
-    }
+    } */
 }
 
 ?>
