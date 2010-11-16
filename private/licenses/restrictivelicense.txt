@@ -1,12 +1,177 @@
-================================================================================
-
-NDLR Restricted Access Licence
-
-================================================================================
-
-To continue, you must agree with the terms of the restricted access licence.
-
-<a href="${dspace.url}/licence/NDLRRestrictedAccessLicence1.pdf">Click here to view the licence</a>
-
-================================================================================
+Dated
+2007
+[Individual] (Deposit Licensor)
+and
+National Digital Learning Repository
+INDIVIDUAL DEPOSITOR LICENCE AND SUB-LICENCE AGREEMENT
+BC.VC.082:12.03.07
+THE HIGHER EDUCATION AUTHORITY (“HEA”) through the National Digital Learning
+Repository (“NDLR”) is funding a teaching and learning electronic materials repository (the
+“Repository”).
+The deposit licence mechanisms are currently under negotiation between HEA, NDLR and
+the universities and designated institutions funded by the HEA, as well as the Institutes of
+Technology designated in the Institutes of Technology Act, 2006. (These bodies are
+collectively described as “the funded bodies and Institutes” in this Agreement. )
+In order to stimulate the process of depositing materials into the Repository, prior to the
+conclusion of the above mentioned deposit licence mechanisms between the HEA, NDLR
+and the funded bodies and Institutes, the HEA, through the NDLR hereby seeks to provide
+individual academics and researchers employed within the funded bodies and Institutes with
+the opportunity to deposit teaching and learning materials, owned by you or duly licensed to
+you, on the terms and conditions as set out in this Agreement.
+The deposit of these materials thereby gives the NDLR a licence to hold these materials in the
+Repository and you, the depositor, grant to the NDLR a right to sub-licence the use of such
+deposited materials within the funded bodies and Institutes.
+Acceptance of this Agreement will be by delivery of a completed acceptance of licence form
+attached hereto to NDLR.
+RECITALS
+WHEREAS the NDLR seeks to provide academics and researchers employed within the
+funded bodies and Institutes with the capacity to deposit and licence the NDLR to grant
+access to teaching and learning materials;
+AND WHEREAS the deposit licensor is responsible for clearing all Intellectual property
+rights owned by third parties in the deposited materials before materials are deposited in the
+Repository;
+AND WHEREAS the deposit licensor warrants that he/she is employed as an academic or
+researcher within one of the funded bodies or Institutes;
+AND WHEREAS the NDLR will only allow access to the Repository to authorised users
+who are affiliated to one of the funded bodies or Institutes.
+THE NDLR AND THE DEPOSIT LICENSOR HEREBY AGREE AS FOLLOWS:
+1.
+DEFINITIONS
+1.1 Except as otherwise provided in this Agreement, the terms used in this
+   Agreement shall follow the definitions found in other HEA/NDLR
+  documentation.
+1.2 “DEPOSIT LICENSOR” means the person identified at the beginning of this
+       document. In the case of a deposit of materials that have been created by
+      academics and researchers from more than one funding body or Institute, the
+     representative of the funding body or Institute that is recognised by any
+Agreement to be, or in default of Agreement de facto is, the lead institution,
+and the person who represents the lead institution shall be regarded as the
+deposit licensor.
+2.
+AGREEMENT
+2.1 2.2 
+3.
+The Deposit Licensor agrees: (a) to deposit the Licensed Material in the
+Repository and allow NDLR to create the metadata as provided for in Clause
+4.1(g) to grant to the NDLR a licence to use the Licensed Materials on the
+terms as set out in Clause 3.
+In consideration for the Licensed Material and the Deposit Licensor’s
+ licensing of the Licensed Material pursuant to Clause 3.1, the NDLR agrees:
+(a) to make the Licensed Material available to Authorised Institutions and
+Authorised Users for Educational Purposes in accordance with the terms of
+this Agreement; (b) to ensure the future preservation and accessibility of the
+Licensed Material; (c) to acknowledge authorship of the Licensed Material in
+accordance with the instructions of the Deposit Licensor.
+LICENCE AGREEMENT
+3.1 3.2 
+4.
+The Deposit Licensor hereby grants to NDLR a non-exclusive, royalty free
+licence to use the Licensed Material in accordance with the terms and
+conditions of this Agreement and to sub-licence the use of the Licensed
+material for use in the funded bodies and Institutes in accordance with the
+provisions of this Agreement.
+It shall be for the NDLR to consider the precise circumstances in which access
+to the deposited materials will be permitted during the period of the licence, in
+particular the circumstances in which downloading or printing of the deposited
+materials will be permitted.
+PERMITTED USES
+4.1
+Without prejudice to clause 3.2 above, the NDLR may:
+(a) mount the Licensed Material on a Secure Network;
+(b) incorporate the Licensed Material in the Repository however
+   constituted;
+(c) communicate, make available and distribute the Licensed Material in
+   any variety of formats and media;
+(d) provide access and allow use of the Licensed Material by Authorised
+   Experts;
+(e) create and display static screen shots of the Licensed Material on a
+   publicly available web site or network for publicity purposes;
+(f) make copies of the Licensed Material as are technically necessary to
+   ensure efficient use by Authorised Experts;
+(g) catalogue, enhance, incorporate and Modify metadata, and re-format
+   the Licensed Material in any way to ensure its future preservation and
+  accessibility;
+(h) grant sub-licences to Authorised Institutions permitting the following
+   uses of the Licensed Material by Authorised Users for Educational
+  Purposes only:-
+(i) to access the Licensed Material in order to search, retrieve,
+   display and download;
+(ii) to Excerpt, Annotate, Aggregate and Modify the Licensed
+    Material;
+(iii) to electronically save any part or parts of the Licensed Material
+     and Modifications;
+(iv) to print out copies of the whole or any part or parts of the
+    Licensed Material and Modifications;
+(v) to incorporate any part or parts of the Licensed Material and
+   Modifications in virtual learning environments, managed
+  learning environments and in any material to be used in the
+ course of instruction provided that by so doing the Repository
+will not be accessible to persons who are not Authorised Users.
+Course and study packs in non-electronic non-print perceptible
+form, such as Braille, may also be compiled;
+(vi) to display, download, print any part or parts of the Licensed
+    Material for the purpose of promotion of the Licensed Material,
+   the Unit Repository or for training other Authorised Users.
+(vii) to display and/or publicly perform any part or parts of the
+     Licensed Material and Modifications as part of a presentation at
+    a seminar, conference, or workshop, or other such similar
+   activity; and
+(viii) to use the Licensed Material and Modifications for such other
+uses as may be conducive to the Educational Purposes.
+4.2
+5.
+Where the Licensed Material is used in accordance with clause 4.1(h)(ii)
+above, each item incorporating the whole or part or parts of the Licensed
+Material shall carry appropriate acknowledgement of the source, title, first
+publication date and copyright owner.
+RESTRICTIONS
+5.1
+Neither the Deposit Licensor, the NDLR or any person authorised to access
+material deposited in the Repository may:
+(a)
+sell or resell the Licensed Material and/or modifications;
+(b) remove, obscure or modify copyright notices, text acknowledging or
+   other means of identification or disclaimers as they may appear
+  without prior written permission of the rights owner;
+(c) use all or any part of the Licensed Material for any Commercial Use or
+   for any purpose other than Educational Purposes unless with the
+  consent of the Licensor;
+(d) display or distribute any part of the Licensed Material on any
+   electronic network, including without limitation the Internet, and the
+  World Wide Web, and any other distribution medium now in existence
+ or hereinafter created, other than by a Secure Network.
+5.2 5.3 
+6.
+This Clause shall survive termination of this Agreement for any reason.
+The Deposit Licensor is free to use the Licensed Material and metadata
+created in respect of the Licensed Material elsewhere without seeking the
+permission of NDLR.
+RIGHTS AND OBLIGATIONS
+6.1 6.2 The Deposit Licensor hereby warrants that the material deposited does not
+       contain any materials that may be considered defamatory or obtained in breach
+      of any other legal obligation owed to a third party, including, but not restricted
+     to, privacy law, data protection law, the law of confidence, contract or tort.
+6.3 
+7.
+The Deposit Licensor shall arrange to obtain all necessary consents and
+permissions in respect of intellectual property rights (including material rights)
+prior to making the deposit and shall indemnify and hold harmless NDLR in
+respect of any claim arising out of any failure to obtain the necessary consents
+and permissions.
+The NDLR may, at its absolute discretion, remove any licensed material or
+modification, or disable access to such material following on from any Third
+Party complaint that such material is illegal under Irish law.
+TERMINATION
+7.1 This Deposit Licence Agreement shall be terminable at any time by either
+   Party, providing three months written notice of a desire to terminate the
+  Licence is given.
+7.2 In the event that the funding body or Institute to which the Deposit Licensor is
+   employed becomes a party to the HEA/NDLR Institutional Licence
+  Agreement, this Individual Deposit Licence Agreement will be superseded by
+ the HEA/NDLR Institutional Licence Agreement and all materials deposited
+under this Agreement shall become subject to the HEA/NDLR Institutional
+Licence Agreement, from the Effective Date as provided in that HEA/NDLR
+Institutional Licence Agreement.
+Signed __________________________ (Deposit Licensor ______________ (date)
+Signed on behalf of NDLR ______________________ on ______________ (date)
 

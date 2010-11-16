@@ -141,7 +141,7 @@ class UploadFiles extends EasyDeposit
         return $message;
     }
 
-    function _rmdir_R($path)
+    /*function _rmdir_R($path)
     {
         // Delete any previously uploaded files
         $path = rtrim($path, '/') . '/';
@@ -158,7 +158,7 @@ class UploadFiles extends EasyDeposit
         }
         closedir($handle);
         return rmdir($path);
-    }
+    }*/
 }
 
 ?>

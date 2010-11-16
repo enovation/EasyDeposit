@@ -20,9 +20,6 @@ class Metadata extends EasyDeposit
 	// Load javascripts
         $data['javascript'] = array('mootools1.2.js', 'mootools1.2-more.js', 'jquery-1.2.6.min.js', 'jquery.mcdropdown.js', 'jquery.bgiframe.js');
 
-        // Prepoulate some session variables
-        $_SESSION['metadata-type'] = '';
-
         // Validate the form
         $this->form_validation->set_rules('title', 'Title', 'xss_clean|_clean|required');
         $this->form_validation->set_rules('author1', 'First author', 'xss_clean|_clean|required');
@@ -32,7 +29,7 @@ class Metadata extends EasyDeposit
         $this->form_validation->set_rules('type', 'Type', 'xss_clean|_clean|required');
         $this->form_validation->set_rules('citation', 'Bibliographic citation', 'xss_clean|_clean');
         $this->form_validation->set_rules('link', 'Link', 'xss_clean|_clean');
-        $this->form_validation->set_rules('keyword', 'ISCED Keywords', 'xss_clean|_clean|required');
+        $this->form_validation->set_rules('keyword1', 'Subject keywords (controlled)', 'xss_clean|_clean|required');
 	$this->form_validation->set_rules('rights', 'Rights', 'xss_clean|_clean|required');
 	
 	if ($this->form_validation->run() == FALSE)
@@ -55,11 +52,18 @@ class Metadata extends EasyDeposit
             $_SESSION['metadata-abstract'] = $this->input->xss_clean($_POST['abstract']);
 
             $types = $this->config->item('easydeposit_metadata_itemtypes');
-            $_SESSION['metadata-type'] = $this->input->xss_clean($types[$_POST['type']]);
+            
+	    $_SESSION['metadata-type'] = $this->input->xss_clean($_POST['type']);
 
             $_SESSION['metadata-link'] = $this->input->xss_clean($_POST['link']);
 	
-	    $_SESSION['metadata-keyword'] = $this->input->xss_clean($_POST['keyword']);
+	    $keywords = array();//$this->input->xss_clean($_POST['keyword1']);
+	    $keywordcount = $this->input->xss_clean($_POST['keywordcount']);	   
+    	    for($i = 1; $i <= $keywordcount; $i++){
+		 $keywords[]= $this->input->xss_clean($_POST['keyword'.$i]);
+	    }
+	    $_SESSION['metadata-keywords'] = $keywords;
+		
 	    $_SESSION['metadata-licenses'] = $this->input->xss_clean($_POST['rights']);
             // Go to the next page
 	    $licences = $this->config->item('ndlr_licenses');
@@ -73,11 +77,10 @@ class Metadata extends EasyDeposit
 
 	    $savepath = $path . $this->config->item('easydeposit_uploadfiles_savedir') . $id;
 
-	    if (file_exists($savepath))
+	   if (!file_exists($savepath))
             {
-		$this->_rmdir_R($savepath);
-            }
-            mkdir($savepath);
+            	mkdir($savepath);
+	    }
             if($_SESSION['licText'] == 'Y'){
                 copy($this->config->item('ndlr_cclicense_location'), $savepath.'/license.txt');
             }else{
@@ -113,9 +116,19 @@ class Metadata extends EasyDeposit
         {
             $data[] = array('Link', $_SESSION['metadata-link'], 'metadata', 'true');
         }
-	if (!empty($_SESSION['metadata-keyword']))
-        {
-            $data[] = array('ISCED Keyword', $_SESSION['metadata-keyword'], 'metadata', 'true');
+	if (!empty($_SESSION['metadata-keywords']))
+        {	
+		$keywords = $_SESSION['metadata-keywords'];
+		$keywordStr = '';
+		for($i = 0; $i < sizeof($keywords); $i++){
+	        	if($i==0){
+				$keywordStr = $keywords[$i];
+			}else{
+			$keywordStr = $keywordStr.', '.$keywords[$i]; 
+			}
+		}
+
+            $data[] = array('Subject keywords (controlled)', $keywordStr, 'metadata', 'true');
         }
 	if (!empty($_SESSION['metadata-licenses']))
         {
@@ -156,15 +169,41 @@ class Metadata extends EasyDeposit
 	{
 	    $package->setLicense($_SESSION['metadata-licenses']);
         }
-        if(!empty($_SESSION['metadata-keyword']))
+        if(!empty($_SESSION['metadata-keywords']))
         {
-            $keywordEntry = $_SESSION['metadata-keyword'];
-	   // $keywords = preg_split("/[\s,] /", $keywordEntry);
-	   // foreach($keywords as $keyword){
-	   	$package->addKeyword($keywordEntry);
-	   // }
+            $keywords = $_SESSION['metadata-keywords'];
+	    foreach ($keywords as $keyword){
+	   	$package->addKeyword($keyword);
+	  }
+        }
+       if(!empty($_SESSION['metadata-keyword2']))
+        {
+            $keywordEntry = $_SESSION['metadata-keyword2'];
+           // $keywords = preg_split("/[\s,] /", $keywordEntry);
+           // foreach($keywords as $keyword){
+                $package->addKeyword($keywordEntry);
+           // }
         }
 
+    }
+
+	function _rmdir_R($path)
+    {
+        // Delete any previously uploaded files
+        $path = rtrim($path, '/') . '/';
+        $handle = opendir($path);
+        for (;FALSE !== ($file = readdir($handle));) {
+                if ($file != "." and $file != "..") {
+                        $fullpath = $path . $file;
+                        if (is_dir($fullpath)) {
+                                $this->_rmdir_R($fullpath);
+                        } else {
+                                unlink($fullpath);
+                        }
+                }
+        }
+        closedir($handle);
+        return rmdir($path);
     }
 
   /*  public static function _email($message)

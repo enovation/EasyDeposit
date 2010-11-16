@@ -1,10 +1,38 @@
 <script type="text/javascript">
         <!--//
-
+	var keywordCounter = <?php if(!empty($_SESSION['metadata-keywords'])){echo (sizeof($_SESSION['metadata-keywords'])+1);}else{echo '2';}?>
         // on DOM ready
         $(document).ready(function (){
-                $("#keyword").mcDropdown("#keywordmenu");
-        });
+                $("#keyword1").mcDropdown("#keywordmenu", null, "1");
+		<?php for($i = 2; !empty($_SESSION['metadata-keywords'])&&$i<=sizeof($_SESSION['metadata-keywords']); $i++){ ?>
+        		$("#keyword<?php echo $i?>").mcDropdown("#keywordmenu", null, "<?php echo $i ?>");
+		<?php } ?>
+	
+	});
+
+	function addKeywordBox() {
+   	   $("#keywords").append('<label for="keyword'+keywordCounter+'" class="fixedwidthlabel"> &#160;  </label><input name="keyword'+keywordCounter+'" type="text" id="keyword'+keywordCounter+'" /><br/>');
+  // $("#id_isced_"+nextelement).mcDropdown("#keywordmenu", null, nextelement);
+  // $(".mcdropdown:last").parent().append('<div id="addNewKeyword"><input type="button" onclick="javascript:addNewKeyword();" value="Add+"/></div>');
+
+//	    var keywordDiv = document.getElementById("keywords");
+//	    var keywordCount = document.getElementById("keywordcount");
+//	    var textfield = document.createElement("input");
+//	    var label = document.createElement("label");
+//	    label.setAttribute("class", "fixedwidthlabel");
+//	    label.setAttribute("for", "keywords");
+//	    label.setAttribute("id", "label"+keywordCounter);
+//	    label.innerHTML=" &#160; ";
+//	    textfield.setAttribute("type", "textfield");    
+//	    textfield.setAttribute("name","keyword"+keywordCounter);
+//	    textfield.setAttribute("id", "keyword"+keywordCounter);
+//	    keywordDiv.appendChild(label);    
+//	    keywordDiv.appendChild(textfield);
+// 	    keywordDiv.appendChild(document.createElement("br"));
+	    $("#keyword"+keywordCounter).mcDropdown("#keywordmenu", null, keywordCounter);
+	   $("#keywordcount").val(keywordCounter);
+	    keywordCounter++;
+	}
         //-->
         </script>
 
@@ -67,20 +95,15 @@
 
         <label for="type" class="fixedwidthlabel">Type of item:</label>
         <?php
-            echo form_dropdown('type', $this->config->item('easydeposit_metadata_itemtypes'), set_value('type'), 'id="type"');
-        ?>
-        <!--<br />
-
-        <label for="peerreviewed" class="fixedwidthlabel">Has the item been peer reviewed?:</label>
-        <?php
-            echo form_dropdown('peerreviewed', $this->config->item('easydeposit_metadata_peerreviewstatus'), set_value('peerreviewed'), 'id="peerreviewed"');
+		$value = '';
+		if(!empty($_SESSION['metadata-type'])){
+			$value = $_SESSION['metadata-type'];
+		}else{
+			$value = set_value('type');
+		}
+            echo form_dropdown('type', $this->config->item('easydeposit_metadata_itemtypes'), $value, 'id="type"');
         ?>
         <br />
-
-        <label for="citation" class="fixedwidthlabel">Bibliographic citation <em>(optional)</em>:</label>
-        <textarea id="citation" name="citation" rows="3" cols="50"
-        ><?php echo set_value('citation'); ?><?php if (!empty($_SESSION['metadata-citation'])) { echo $_SESSION['metadata-citation']; } ?></textarea>
-        --><br />
 
         <label for="link" class="fixedwidthlabel">Existing URL for item <em>(optional)</em>:</label>
         <input type="text" id="link" name="link" size="40"
@@ -88,15 +111,33 @@
 
 
 	<br />
-
-        <label for="keywords" class="fixedwidthlabel">ISCED Keyword:</label>
-	<input type="text" name="keyword" id="keyword" value="<?php echo set_value('keyword'); ?><?php if (!empty($_SESSION['metadata-keyword'])) { echo $_SESSION['metadata-keyword']; } ?>" />
-
-	<br />
+	<div class="formattextnext" id="keywords">
+	<input type="hidden" id="current_menu" value="0"/>
+        <label for="keywords" class="fixedwidthlabel">Subject keywords (controlled):</label>
+	<input type="text" name="keyword1" id="keyword1" value="<?php echo set_value('keyword1');?><?php if (!empty($_SESSION['metadata-keywords'][0])) { echo $_SESSION['metadata-keywords'][0]; } ?>" />
+	<br>
+	<?php 
+	for($i = 2; !empty($_SESSION['metadata-keywords'])&&$i<=sizeof($_SESSION['metadata-keywords']); $i++){ ?>
+		<label class="fixedwidthlabel">&#160;</label>
+		<input type="text" name="keyword<?php echo $i ?>" id="keyword<?php echo $i ?>" value="<?php echo set_value('keyword'.$i); if(!empty($_SESSION['metadata-keywords'][$i-1])){echo $_SESSION['metadata-keywords'][$i-1];} ?> "/>
+        	<br>
+	<?php } ?>
+	</div>
+	<input type="hidden" id="keywordcount" name="keywordcount" value="<?php if(!empty($_SESSION['metadata-keywords'])){echo sizeof($_SESSION['metadata-keywords']);}else{echo '1';}?>"/>
+	<label class="fixedwidthlabel">&#160;</label><div style="float:left; height:20px"><a  href="javascript:addKeywordBox()" >add additional keywords</a> </div>
+	<br/>
+	
 
         <label for="rights" class="fixedwidthlabel">Rights<em></em>:</label>
 	<?php
-            echo form_dropdown('rights', $this->config->item('ndlr_licenses'), set_value('rights'), 'id="rights"');
+		$value = '';
+                if(!empty($_SESSION['metadata-licenses'])){
+                        $value = $_SESSION['metadata-licenses'];
+                }else{
+                        $value = set_value('rights');
+                }
+
+            echo form_dropdown('rights', $this->config->item('ndlr_licenses'), $value , 'id="rights"');
         ?>
 
 
@@ -156,7 +197,7 @@
                 <li rel="Psychology">Psychology </li>
                 <li rel="Sociology">Sociology </li>
                 <li rel="Political science">Political science </li>
-                <li rel=">Economics">Economics </li>
+                <li rel="Economics">Economics </li>
             </ul>
         </li>
         <li rel="Media, Information and Library Studies">Media, Information and Library Studies

@@ -48,7 +48,6 @@ class Deposit extends EasyDeposit
                 $stepclass = ucfirst($stepname);
                 call_user_func(array($stepclass, '_package'), $package);
             }
-
             $package->create();
 
             // Deposit the package

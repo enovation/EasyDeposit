@@ -9,8 +9,10 @@
 	<link rel="SHORTCUT ICON" href="favicon.ico">
         <?php if (!empty($javascript)) { foreach ($javascript as $js): ?>
 	<link rel='stylesheet' type='text/css' media='all' href='<?php echo base_url(); ?>css/jquery.mcdropdown.min.css' />
- 	
-       <script type="text/javascript" src="<?php echo base_url(); ?>js/<?php echo $js; ?>"></script>
+ 	<!--[if lte IE 8]> 
+	<link rel='stylesheet' type='text/css' media='all' href='<?php echo base_url();?>css/jquery.mcdropdown.min.ie.css' />
+	<![endif]-->
+	<script type="text/javascript" src="<?php echo base_url(); ?>js/<?php echo $js; ?>"></script>
         <?php endforeach; } ?>
 
 

@@ -31,10 +31,10 @@ class Nologin extends EasyDeposit
     {
         // Set a random identifier and store it in the session
         $_SESSION['username'] = mt_rand();
-
         // Go to the next page
         $this->_gotonextstep();
-    }
+    
+	}
 
     /**
      * If the username' session variable is set, we assume that the
@@ -51,6 +51,7 @@ class Nologin extends EasyDeposit
             return FALSE;
         }
     }
+
 
     /**
      * Return the user's random id.
