@@ -132,7 +132,12 @@
 			
 		// store a reference to the list, if it's not already a jQuery object make it one
 		$list = (((typeof list == "object") && !!list.jquery)) ? list : $(list);
-		
+		alert('object = '+jQuery(list).find("ul").length+" "+jQuery(list)[0].innerHTML);
+var message = '';
+for($i = 0; $i<$list.find("ul").length; $i++){
+        message +=' '+$list.find("ul");
+}
+
 		// we need to calculate the visual width for each nested list
 		$list
 			// move list to body -- this allows us to always calculate the correct position & width of the elements
