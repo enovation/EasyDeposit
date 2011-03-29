@@ -15,7 +15,7 @@
 $config['easydeposit_librarylocation'] = 'system/application/libraries/swordapp-php-library';
 
 // The name of the application (as shown on the welcome page)
-$config['easydeposit_welcome_title'] = "NDLR EasyDeposit";
+$config['easydeposit_welcome_title'] = "NDLR EasyDeposit UAT";
 
 // The steps that a submission should take
 // The first of these should be a login step that has public static methods _loggedin and _id
@@ -24,7 +24,7 @@ $config['easydeposit_steps'] = array('nologin', 'retrieveservicedocument', 'meta
 
 // Email address for support enquiries for users of the client
 //todo
-$config['easydeposit_supportemail'] = 'mark.melia@enovation.ie';
+$config['easydeposit_supportemail'] = 'helpdesk@ndlr.ie';
 
 // LDAP login settings
 $config['easydeposit_ldaplogin_netidname'] = 'NetID';
@@ -32,7 +32,7 @@ $config['easydeposit_ldaplogin_server'] = 'ldaps://ldap.example.com';
 $config['easydeposit_ldaplogin_context'] = 'OU=users,DC=example,DC=com';
 
 // ServiceDocument Login settings  TODO - specify URL of service doc location for NDLR
-$config['easydeposit_servicedocumentlogin_url'] = 'http://ndlr.enovation.ie/handle/123456789/5617';
+$config['easydeposit_servicedocumentlogin_url'] = 'https://dspace.ndlr.ie/sword/deposit/10633/30597';
 
 // A list of service documents to provide in the selectrepository step
 $config['easydeposit_selectrepository_list'] = array('https://dspace.ndlr.ie/sword/servicedocument');
@@ -40,7 +40,7 @@ $config['easydeposit_selectrepository_list'] = array('https://dspace.ndlr.ie/swo
 // Credentials with which to retrieve a service document automatically 
 $config['easydeposit_retrieveservicedocument_url'] = 'http://ndlr.enovation.ie/sword/servicedocument';
 $config['easydeposit_retrieveservicedocument_username'] = 'cmsadmin@enovation.ie';
-$config['easydeposit_retrieveservicedocument_password'] = 'na3QaYfh4';
+$config['easydeposit_retrieveservicedocument_password'] = 'y7E66vc^tN';
 $config['easydeposit_retrieveservicedocument_obo'] = '';
 
 // Item types
@@ -65,9 +65,9 @@ $config['ndlr_cclicense_location']='private/licenses/cclicense.txt';
 $config['ndlr_restrictivelicense_location']='private/licenses/restrictivelicense.txt';
 
 // Hard code depositurl, login and password if using the depositcredentials step
-$config['easydeposit_depositcredentials_depositurl'] = 'http://ndlr.enovation.ie/sword/deposit/123456789/5617';
+$config['easydeposit_depositcredentials_depositurl'] = 'https://dspace.ndlr.ie/sword/deposit/10633/30597';
 $config['easydeposit_depositcredentials_username'] = 'cmsadmin@enovation.ie';
-$config['easydeposit_depositcredentials_password'] = 'na3QaYfh4';
+$config['easydeposit_depositcredentials_password'] = 'y7E66vc^tN';
 $config['easydeposit_depositcredentials_obo'] = '';
 
 // Hard code depositurls, logins and passwords if using the multipledepositcredentials step
